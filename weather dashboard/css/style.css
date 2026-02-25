@@ -1,0 +1,47 @@
+
+body {
+  background: linear-gradient(to right, #74ebd5, #ACB6E5);
+}
+h1{
+  color: white;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.forecast-container {
+    display: flex;        
+    justify-content: center; 
+    gap: 15px;            
+    margin-top: 20px;
+    flex-wrap: wrap;   
+
+    margin-bottom: 20px;
+}
+
+.forecast-card {
+    background: rgba(255, 255, 255, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;  
+    padding: 15px;
+    width: 100px;         
+    text-align: center;   
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+.day-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.day-temp {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.current-weather {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+    margin-top: 30px;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">   
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+
+ <h1>🌤️ Weather Today</h1>
+<div class="input-group m-auto">
+  <input type="text" class="form-control" placeholder="Enter a city name" aria-label="city name" aria-describedby="button-addon2" id="inpt">
+<button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+</div>
+<div id="weather-result">
+
+</div>
+</div>
+
+
+ 
+       
+        
+      
+       
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+ <script>
+var btn= document.getElementById("button-addon2")
+var inpt=document.getElementById('inpt')
+var apiKey='51eb47a11988b08ac6095aa891621080'
+var result = document.getElementById("weather-result")
+btn.addEventListener('click', function(){
+var val=inpt.value
+result.innerHTML='you searched for: '+ val
+result.style.display='block'
+if(val==''){
+    result.style.display='none'
+}
+if (/\d/.test(val)){
+  result.innerHTML='please enter avalid city name'
+  return;  
+}
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${val}&appid=${apiKey}&units=metric`)
+  .then(response => {
+    if (!response.ok) throw new Error('City not found');
+    return response.json();
+  })
+  .then(data => {
+
+    const current = data.list[0];
+    const currentIcon = getIconName(current.weather[0].icon);
+    const currentIconUrl = `https://img.icons8.com/color/96/000000/${currentIcon}.png`;
+
+    let htmlContent = `
+        <div class="current-weather">
+            <h3>${data.city.name}, ${data.city.country}</h3>
+            <img src="${currentIconUrl}" alt="Weather icon">
+            <p class="main-temp">${Math.round(current.main.temp)}°C</p>
+            <p>Condition: ${current.weather[0].main}</p>
+            <p>Humidity: ${current.main.humidity}% | Wind: ${current.wind.speed} m/s</p>
+        </div>
+        <hr>
+        <div class="forecast-container">
+    `;
+
+    const dailyForecast = data.list.filter(item => item.dt_txt.includes("12:00:00")).slice(0, 3);
+
+    dailyForecast.forEach(day => {
+      const date = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
+      const iconName = getIconName(day.weather[0].icon);
+      const iconUrl = `https://img.icons8.com/color/48/000000/${iconName}.png`;
+
+      htmlContent += `
+        <div class="forecast-card">
+          <p class="day-name">${date}</p>
+          <img src="${iconUrl}" alt="icon">
+          <p class="day-temp">${Math.round(day.main.temp)}°C</p>
+        </div>
+      `;
+    });
+
+    htmlContent += `</div>`;
+    result.innerHTML = htmlContent;
+  })
+  .catch(err => {
+    result.innerHTML = "City not found";
+    console.error(err);
+  });
+
+function getIconName(code) {
+  if(code.includes('01')) return 'sun';
+  if(code.includes('02') || code.includes('03') || code.includes('04')) return 'cloud';
+  if(code.includes('09') || code.includes('10')) return 'rain';
+  if(code.includes('11')) return 'storm';
+  if(code.includes('13')) return 'snow';
+  return 'partly-cloudy-day';
+}
+});
+</script>
+</body>
+</html>
+ 
