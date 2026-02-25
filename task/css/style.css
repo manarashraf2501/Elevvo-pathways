@@ -1,0 +1,149 @@
+
+body{
+    text-transform: capitalize;
+}
+.logo{
+    color:#FFD150;
+}
+p,h1{
+    color: #15173D;
+}
+.p2{
+    color:#088395;
+}
+
+.animated {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.back{
+height: 45px;
+width: 45px;
+border-radius: 50%;
+background-color: rgb(232, 232, 232);
+text-align: center;
+padding: 1%;
+margin-left: 45%;
+}
+.back:hover svg{
+    transform: rotate(90deg);
+}
+
+.img-fluid{
+   width: 75%;
+  animation: move 1s  linear infinite;
+}
+
+@keyframes move{
+    from{
+    transform: translateY(0);
+    }
+    to{
+      transform: translateY(-70px);  
+    }
+}
+.left{
+    margin-top: 80px;
+}
+.price{
+padding: 20px;
+gap: 20px;
+}
+.basic{
+ background-color: #FFD150;
+ color: white;
+}
+.pro{
+background-color: #FFD150;
+ color: white;
+}
+.prime{
+    background-color: #088395;
+    color: white;
+}
+.well{
+    color: white;
+    border: solid;
+}
+
+
+
+.div{
+
+margin: 6rem 12rem;
+
+height: 100vh; width: 60%;
+
+background-size: 100% 100%;
+
+box-shadow: 20px 20px 10px gray;
+background-color: #FFD150;
+animation: slider 20s linear infinite;
+}
+
+
+
+
+@keyframes slider {
+
+    0% {
+
+        background-image: url(img/scnd.png);
+
+        background-position: 0 0, 500px 0, 1000px 0;
+
+    }
+
+    33% {
+
+        background-image: url(img/thrd.png);
+
+        background-position: -500px 0, 0 0, 500px 0;
+
+    }
+
+    70% {
+
+        background-image: url(img/st.png);
+
+        background-position: -1000px 0, -500px 0, 0 0;
+
+    }
+
+    100% {
+
+        background-image: url(img/scnd.png);
+
+        background-position: 0 0, 500px 0, 1000px 0;
+
+    }
+}
+
+
+.footer{
+  background-color: white;
+  margin-top: 100px;
+   padding: 4px 0;
+   text-align: center;
+   width: 100%;
+}
+.social-icons2 {
+      display: flex;
+      gap: 20px;
+      font-size:20px;
+      margin-left: 36%;
+    }
+    .social-icons2 a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s;
+    }
