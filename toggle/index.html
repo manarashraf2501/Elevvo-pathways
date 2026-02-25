@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggle</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+     <!-- Toggle Button -->
+  <button id="toggleBtn" class="toggle-btn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">
+          <img src="css/logo.png" alt="Logo" style="width: 60px; height: 60px; border-radius: 50%;">
+    </div>
+
+    <ul class="nav-links">
+      <li><i class="fas fa-home"></i><span>Home</span></li>
+      <li><i class="fas fa-user"></i><span>Profile</span></li>
+      <li><i class="fas fa-briefcase"></i><span>Services</span></li>
+      <li><i class="fas fa-envelope"></i><span>Contact</span></li>
+    </ul>
+  </div>
+  <!-- hero section -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <h1 class="typewriter">
+        welcome to our website
+    </h1>
+   
+  </section>
+  <script>
+const toggleBtn = document.getElementById("toggleBtn");
+const sidebar = document.getElementById("sidebar");
+
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("collapsed");
+   if (sidebar.classList.contains("collapsed")) {
+    toggleBtn.style.left = "80px"; 
+  } else {
+    toggleBtn.style.left = "360px"; 
+  }
+});
+  </script>
+</body>
+</html>
